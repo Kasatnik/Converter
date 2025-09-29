@@ -9,28 +9,57 @@
 </head>
 <body>
 <h1>
-    Converter for photos and videos
+    Конвертер для фото и видео
 </h1>
-<div class="allblocks">
-    <input type="file" class="selectfile">
-    <div class="block">
-        <h2>Простой div блок</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="allblocks">
+        <input type="file" class="selectfile" name="file">
+        <div class="block">
+            выбрать формат
+            <select name="formatsphoto">
+              <option value="">Выберите формат для фото</option>
+              <option value="jpg">JPG</option>
+              <option value="png">PNG</option>
+              <option value="svg">SVG</option>
+              <option value="webp">WEBP</option>
+            </select>
+        </div>
+        <button type="submit" class="button_convert">
+            Конвертировать
+        </button>
+        <button class="load">
+            Скачать файл
+        </button>
     </div>
-    <button class="button_convert">
-        Convert!
-    </button>
-    <button class="load">
-        Download file
-    </button>
-    <h2>Простой div блок</h2>
-</div>
+</form>
+    <script>
+        let x = "Hi";
+        x = 10;
+        console.log(x);
+
+        for (let x = 0;x<=100;x++){
+            if (x > 50){
+                console.log(x);
+            }
+        }
+
+        let t = [1,2,3,4,5];
+
+        for (let i of t){
+            console.log(i)
+        }
+
+        console.log(t[1]);
+        console.log(t.length);
+        t.push(4);
+        console.log(t);
+    </script>
 </body>
 </html>
 
+<!--Как угодно, сделать так, чтобы при заходе на страничку - все объекты плавно появлялись на экране （lazy загрузка)-->
 
-<!--Кнопки сделать гораздо меньше, цвета подобрать-->
-<!--При наведении на кнопку - кнопка должна не супер быстро менять свой размер и увеличиваться-->
-<!--Вместе с увеличением - должна появляться сзади тень, любого цвета-->
 
-<!--Узнать, как при входе на главную страничку получать айпи адрес устройства и просто принтовать его в терминал-->
-<!--Код нужно будет писать в views.py , внутри функции дроу_хоме()-->
+
+
