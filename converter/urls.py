@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app_converter.views import draw_home
+from app_converter.views import draw_home, download
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', draw_home),
+    path('download/<str:file_name>', download)
 ]

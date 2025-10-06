@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>
-    Конвертер для фото и видео
+    Конвертер для фото
 </h1>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
@@ -28,37 +28,72 @@
         <button type="submit" class="button_convert">
             Конвертировать
         </button>
-        <button class="load">
+        <a class="load" href="{{ link }}">
             Скачать файл
-        </button>
+        </a>
     </div>
 </form>
     <script>
-        let x = "Hi";
-        x = 10;
-        console.log(x);
+    // Функция для плавного появления элементов
+    function initFadeInAnimation() {
+        // Собираем все элементы, которые нужно анимировать
+        const elementsToAnimate = [
+            document.querySelector('h1'),
+            document.querySelector('.selectfile'),
+            document.querySelector('.block'),
+            document.querySelector('.button_convert'),
+            document.querySelector('.load')
+        ].filter(element => element !== null); // Убираем null элементы
 
-        for (let x = 0;x<=100;x++){
-            if (x > 50){
-                console.log(x);
-            }
+        // Сначала скрываем все элементы
+        elementsToAnimate.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        });
+
+        // Последовательно показываем элементы с задержкой
+        elementsToAnimate.forEach((element, index) => {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, 300 + (index * 200)); // Задержка для каждого следующего элемента
+        });
+    }
+
+    // Запускаем анимацию когда страница полностью загружена
+    window.addEventListener('load', function() {
+        // Небольшая задержка для лучшего визуального эффекта
+        setTimeout(initFadeInAnimation, 100);
+    });
+
+    // Ваш существующий код (оставьте его если он нужен)
+    let x = "Hi";
+    x = 10;
+    console.log(x);
+
+    for (let x = 0; x <= 100; x++) {
+        if (x > 50) {
+            console.log(x);
         }
+    }
 
-        let t = [1,2,3,4,5];
+    let t = [1, 2, 3, 4, 5];
 
-        for (let i of t){
-            console.log(i)
-        }
+    for (let i of t) {
+        console.log(i)
+    }
 
-        console.log(t[1]);
-        console.log(t.length);
-        t.push(4);
-        console.log(t);
-    </script>
+    console.log(t[1]);
+    console.log(t.length);
+    t.push(4);
+    console.log(t);
+</script>
 </body>
 </html>
 
-<!--Как угодно, сделать так, чтобы при заходе на страничку - все объекты плавно появлялись на экране （lazy загрузка)-->
+<!--сделать кнопку скачать
+можно сделать ссылку и переходя по ней скачивать файл-->
 
 
 
